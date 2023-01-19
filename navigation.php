@@ -1,9 +1,8 @@
-</style>
 <!-- Main Sidebar Container -->
-      <aside class="main-sidebar sidebar-dark-primary elevation-4 sidebar-no-expand">
+      <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="<?php echo base_url ?>admin" class="brand-link bg-navy text-sm">
-        <img src="<?php echo validate_image($_settings->info('logo'))?>" alt="Store Logo" class="brand-image img-circle elevation-3 bg-black" style="width: 1.8rem;height: 1.8rem;max-height: unset;object-fit:scale-down;object-position:center center">
+        <a href="<?php echo base_url ?>admin" class="brand-link text-sm">
+        <img src="<?php echo validate_image($_settings->info('logo'))?>" alt="Store Logo" class="brand-image img-circle elevation-3" style="opacity: .8;width: 2.5rem;height: 2.5rem;max-height: unset">
         <span class="brand-text font-weight-light"><?php echo $_settings->info('short_name') ?></span>
         </a>
         <!-- Sidebar -->
@@ -19,10 +18,17 @@
             <div class="os-viewport os-viewport-native-scrollbars-invisible" style="overflow-y: scroll;">
               <div class="os-content" style="padding: 0px 8px; height: 100%; width: 100%;">
                 <!-- Sidebar user panel (optional) -->
-                <div class="clearfix"></div>
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                  <div class="image">
+                    <img src="<?php echo validate_image($_settings->userdata('avatar')) ?>" class="img-circle elevation-2" alt="User Image" style="height: 2rem;object-fit: cover">
+                  </div>
+                  <div class="info">
+                    <a href="<?php echo base_url ?>admin/?page=user" class="d-block"><?php echo ucwords($_settings->userdata('firstname').' '.$_settings->userdata('lastname')) ?></a>
+                  </div>
+                </div>
                 <!-- Sidebar Menu -->
-                <nav class="mt-4">
-                   <ul class="nav nav-pills nav-sidebar flex-column text-sm nav-compact nav-flat nav-child-indent nav-collapse-hide-child" data-widget="treeview" role="menu" data-accordion="false">
+                <nav class="mt-2">
+                   <ul class="nav nav-pills nav-sidebar flex-column nav-flat" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item dropdown">
                       <a href="./" class="nav-link nav-home">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -30,67 +36,49 @@
                           Dashboard
                         </p>
                       </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="<?php echo base_url ?>admin/?page=employee" class="nav-link nav-employee">
-                        <i class="nav-icon fas fa-user-friends"></i>
-                        <p>
-                          Employee List
-                        </p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="<?php echo base_url ?>admin/?page=reports/employee" class="nav-link nav-reports_employee">
-                        <i class="nav-icon fas fa-th-list"></i>
-                        <p>
-                          Employee Logs
-                        </p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="<?php echo base_url ?>admin/?page=reports/visitor" class="nav-link nav-reports_visitor">
-                        <i class="nav-icon fas fa-table"></i>
-                        <p>
-                          Visitors Logs
-                        </p>
-                      </a>
-                    </li>
-                    <?php if($_settings->userdata('type') == 1): ?>
-                    <li class="nav-header">Maintenance</li>
+                    </li> 
+                    <li class="nav-header">Master List</li>
                     <li class="nav-item dropdown">
-                      <a href="<?php echo base_url ?>admin/?page=maintenance/department" class="nav-link nav-maintenance_department">
-                        <i class="nav-icon fas fa-building"></i>
-                        <p>
-                          Department List
-                        </p>
-                      </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                      <a href="<?php echo base_url ?>admin/?page=maintenance/designation" class="nav-link nav-maintenance_designation">
-                        <i class="nav-icon fas fa-list"></i>
-                        <p>
-                          Designation List
-                        </p>
-                      </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                      <a href="<?php echo base_url ?>admin/?page=user/list" class="nav-link nav-user_list">
+                      <a href="<?php echo base_url ?>admin/?page=people" class="nav-link nav-people">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
-                          User List
+                          Individuals List
                         </p>
                       </a>
                     </li>
                     <li class="nav-item dropdown">
-                      <a href="<?php echo base_url ?>admin/?page=system_info" class="nav-link nav-system_info">
-                        <i class="nav-icon fas fa-cogs"></i>
+                      <a href="<?php echo base_url ?>admin/?page=establishment" class="nav-link nav-establishment">
+                        <i class="nav-icon fas fa-building"></i>
                         <p>
-                          Settings
+                          Establishment List
                         </p>
                       </a>
                     </li>
-                    <?php endif; ?>
-
+                    <li class="nav-header">Maintenance</li>
+                    <li class="nav-item dropdown">
+                      <a href="<?php echo base_url ?>admin/?page=state" class="nav-link nav-state">
+                        <i class="nav-icon fas fa-map-marker-alt"></i>
+                        <p>
+                          State/Province List
+                        </p>
+                      </a>
+                    </li> 
+                    <li class="nav-item dropdown">
+                      <a href="<?php echo base_url ?>admin/?page=city" class="nav-link nav-city">
+                        <i class="nav-icon fas fa-map-marker"></i>
+                        <p>
+                          City List
+                        </p>
+                      </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a href="<?php echo base_url ?>admin/?page=zone" class="nav-link nav-zone">
+                        <i class="nav-icon fas fa-layer-group"></i>
+                        <p>
+                          Barangay/Zone List
+                        </p>
+                      </a>
+                    </li>
                   </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -112,11 +100,11 @@
         <!-- /.sidebar -->
       </aside>
       <script>
-        var page;
     $(document).ready(function(){
-      page = '<?php echo isset($_GET['page']) ? $_GET['page'] : 'home' ?>';
-      page = page.replace(/\//gi,'_');
-
+      var page = '<?php echo isset($_GET['page']) ? $_GET['page'] : 'home' ?>';
+      var s = '<?php echo isset($_GET['s']) ? $_GET['s'] : '' ?>';
+      if(s!='')
+        page = page+'_'+s;
       if($('.nav-link.nav-'+page).length > 0){
              $('.nav-link.nav-'+page).addClass('active')
         if($('.nav-link.nav-'+page).hasClass('tree-item') == true){
@@ -128,12 +116,6 @@
         }
 
       }
-      
-		$('#receive-nav').click(function(){
-      $('#uni_modal').on('shown.bs.modal',function(){
-        $('#find-transaction [name="tracking_code"]').focus();
-      })
-			uni_modal("Enter Tracking Number","transaction/find_transaction.php");
-		})
+     
     })
   </script>

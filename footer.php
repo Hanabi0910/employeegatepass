@@ -1,5 +1,8 @@
 <script>
   $(document).ready(function(){
+    $('#p_use').click(function(){
+      uni_modal("Privacy Policy","policy.php","mid-large")
+    })
      window.viewer_modal = function($src = ''){
       start_loader()
       var t = $src.split('.')
@@ -55,17 +58,14 @@
     }
   })
 </script>
-<footer class="main-footer text-sm">
-        <strong>Copyright © <?php echo date('Y') ?>-
-        <!-- <a href=""></a> -->
-        </strong>
-        ALL RIGHTS RESERVE.
-        <div class="float-right d-none d-sm-inline-block">
-          <b><?php echo $_settings->info('short_name') ?> by: <a href="" target="blank">Christopher Legaspi</a> </b>
-        </div>
-      </footer>
-    </div>
-    <!-- ./wrapper -->
+<!-- Footer-->
+<footer class="py-5 bg-dark-gradient">
+            <div class="container">
+              <p class="m-0 text-center text-white">Copyright &copy; <?php echo $_settings->info('short_name') ?> 2022</p>
+              <p class="m-0 text-center text-white">Developed By: <a href="">Christopher Legaspi</a></p>
+          </div>
+        </footer>
+
    
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
